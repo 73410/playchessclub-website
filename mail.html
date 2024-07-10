@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <link rel="stylesheet" href="static/css/mail.css">
+</head>
+<body>
+<div class="container">
+    <img src="static/image/logo.webp" alt="Logo" id="page-logo">
+    <div class="left-section">
+
+    </div>
+    <div class="right-section">
+        <h2>开始吧</h2>
+        <button id="login-btn">添加</button>
+    </div>
+</div>
+
+<div class="modal" id="login-modal">
+    <div class="modal-content">
+        <span class="close" id="close-login">&times;</span>
+        <div id="status_message" class="statusmessage"></div>
+        <form id="add-email-form">
+            <h2>添加邮箱</h2>
+            <table>
+                <tr>
+                    <td><input type="text" size="20" name="email" id="email" placeholder="邮箱" required></td>
+                </tr>
+            </table>
+            <br>
+            <button type="submit">添加</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // 获取所有必要的元素
+    var loginBtn = document.getElementById('login-btn');
+    var loginModal = document.getElementById('login-modal');
+    var closeLogin = document.getElementById('close-login');
+    var addEmailForm = document.getElementById('add-email-form');
+    var statusMessage = document.getElementById('status_message');
+
+    // 显示登录弹窗
+    loginBtn.onclick = function() {
+        loginModal.classList.add('show');
+    };
+
+    // 点击关闭按钮隐藏登录弹窗
+    closeLogin.onclick = function() {
+        loginModal.classList.remove('show');
+    };
+
+    // 点击窗口外部隐藏弹窗
+    window.onclick = function(event) {
+        if (event.target == loginModal) {
+            loginModal.classList.remove('show');
+        }
+    };
+
+    // 处理表单提交事件
+    addEmailForm.onsubmit = async function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+
+        try {
+            const response = await fetch('https://api.resend.com/audience', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 're_MgWiNc15_KVpvh35c4u3nFGq3a5xTT7Zu' // 替换为你的API Key
+                },
+                body: JSON.stringify({ email: email })
+            });
+
+            if (response.ok) {
+                statusMessage.textContent = '邮箱添加成功';
+                statusMessage.classList.add('success');
+            } else {
+                statusMessage.textContent = '邮箱添加失败';
+                statusMessage.classList.add('error');
+            }
+        } catch (error) {
+            statusMessage.textContent = '网络错误，请稍后再试';
+            statusMessage.classList.add('error');
+        }
+
+        setTimeout(() => {
+            statusMessage.textContent = '';
+            statusMessage.classList.remove('success', 'error');
+            loginModal.classList.remove('show');
+        }, 3000);
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+#page-logo {
+    position: fixed; /* 使用固定定位 */
+    top: 10px; /* 距离顶部10像素 */
+    right: 10px; /* 距离右侧10像素 */
+    width: 50px; /* logo的宽度，根据实际需要调整 */
+    height: auto; /* 高度自动调整以保持图片比例 */
+    z-index: 1000; /* 确保logo位于其他内容之上 */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* 改为垂直布局 */
+    }
+
+    .left-section, .right-section {
+        flex: 1 0 100%; /* 占据100%宽度 */
+        height: 50vh; /* 每个部分占50%的屏幕高度 */
+        }
+    }
+
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #FFFBE9; /* 整体背景色 */
+    }
+
+    .container {
+        display: flex;
+        height: 100vh; /* 容器高度设置为视窗高度 */
+    }
+
+    .left-section {
+        flex: 4; /* 占据一半空间 */
+        background-image: url('achXdg.jpg'); /* 替换为您的图片路径 */
+        background-size: cover;
+        background-position: center; /* 图片居中显示 */
+        background-repeat: no-repeat;
+    }
+
+    .right-section {
+        flex: 1; /* 占据另一半空间 */
+        background: #FFFFFF; /* 右侧背景色设置为白色 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 50px; /* 根据需要调整间距 */
+    }
+
+    .right-section h2 {
+        margin-bottom: 20px;
+        color: #333; /* 文字颜色 */
+    }
+
+    button {
+        padding: 10px 20px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #5c67f2;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        outline: none;
+    }
+
+    button:hover {
+        background-color: #4a54e1;
+    }
+
+
+    .modal {
+        display: block;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+        opacity: 0;
+        visibility: hidden; /* 开始时不可见 */
+        transition: opacity 0.4s, visibility 0.4s; /* 过渡效果 */
+    }
+    .modal.show {
+        opacity: 1; /* 结束时完全不透明 */
+        visibility: visible; /* 结束时可见 */
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        border-radius: 10px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    @media (max-width: 768px) {
+            .modal-content {
+                width: 90%; /* 弹窗宽度调整为90% */
+                margin: 10% auto; /* 上下外边距调整 */
+            }
+            }
+        input[type=text], input[type=password], input[type=email] {
+            width: 90%;
+            padding: 15px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px; /* Rounded corners for inputs */
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5c67f2;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+        }
+        #status_message {
+            color: red; /* 设置文本颜色为红色 */
+        }
+        #server-status-banner {
+            width: 100%; /* 使横幅宽度与容器宽度一致 */
+            overflow: hidden; /* 避免内容溢出 */
+        }
+
+        #server-status-banner img {
+            width: 100%; /* 图片宽度为100%，确保响应式 */
+            height: auto; /* 自动高度，保持图片比例 */
+            display: block; /* 避免出现额外的空间 */
+        }
+    @media (prefers-color-scheme: dark) {
+    body, html {
+        background: #121212; /* 深色背景 */
+        color: #e0e0e0; /* 浅色文字 */
+    }
+
+    .right-section {
+        background: #1c1c1c; /* 深色模式右侧背景色 */
+    }
+
+    .right-section h2 {
+        color: #e0e0e0; /* 深色模式文字颜色 */
+    }
+
+    button {
+        background-color: #0c1591; /* 深色模式按钮背景 */
+        color: #ccc; /* 深色模式按钮文字 */
+    }
+
+    button:hover {
+        background-color: rgb(25, 34, 152); /* 深色模式按钮悬浮背景 */
+    }
+
+    .modal {
+        background-color: rgba(0,0,0,0.7); /* 深色模式模态背景 */
+    }
+
+    .modal-content {
+        background-color: #222; /* 深色模式弹窗背景 */
+        border-color: #333; /* 深色模式弹窗边框 */
+    }
+
+    .close {
+        color: #999; /* 深色模式关闭按钮颜色 */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #ddd; /* 深色模式关闭按钮悬浮颜色 */
+    }
+    input[type=submit] {
+        background: #0c1591;
+    }
+    input[type=text], input[type=password], input[type=email]  {
+        background: #333; /* 输入框和提交按钮的深色背景 */
+        color: #ccc; /* 输入框和提交按钮的文字颜色 */
+        border: 1px solid #444; /* 输入框和提交按钮的边框颜色 */
+    }
+
+    input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+        border-color: #555; /* 输入框聚焦时的边框颜色 */
+    }
+
+    #status_message {
+        color: #ff5555; /* 状态消息的深色模式颜色 */
+    }
+}
+#icon {
+        margin-bottom: 0px;
+        width: 50px; /* 根据需要调整图片宽度 */
+        height: auto;
+    }
