@@ -25,7 +25,10 @@
                     <td><input type="text" size="20" name="email" id="email" placeholder="邮箱" required></td>
                 </tr>
                 <tr>
-                    <td><input type="text" size="20" name="name" id="name" placeholder="名字" required></td>
+                    <td><input type="text" size="20" name="first_name" id="first_name" placeholder="名字" required></td>
+                </tr>
+                <tr>
+                    <td><input type="text" size="20" name="last_name" id="last_name" placeholder="姓" required></td>
                 </tr>
             </table>
             <br>
@@ -58,15 +61,16 @@
     addEmailForm.onsubmit = async function(event) {
         event.preventDefault();
         const email = document.getElementById('email').value;
-        const name = document.getElementById('name').value;
+        const first_name = document.getElementById('first_name').value;
+        const last_name = document.getElementById('last_name').value;
 
         try {
-            const response = await fetch('https://mail.mcpcc.fun', { // 替换为您的Cloudflare Worker路径
+            const response = await fetch('mail.mcpcc.fun', { // 替换为您的Cloudflare Worker路径
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email: email, name: name })
+                body: JSON.stringify({ email: email, first_name: first_name, last_name: last_name })
             });
 
             if (response.ok) {
