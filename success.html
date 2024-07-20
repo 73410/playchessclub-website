@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <link rel="stylesheet" href="static/css/mail.css">
+    <title>注册成功</title>
+    <link rel="icon" href="logo.webp" type="image/webp">
+</head>
+<body>
+<div class="container">
+    <img src="static/image/logo.webp" alt="Logo" id="page-logo">
+    <div class="left-section"></div>
+    <div class="right-section">
+        <h2>注册成功</h2>
+        <p>感谢您的注册！我们已经向您的邮箱发送了一封我们我们服务器ip的邮件。</p>
+        <p>点击下面的按钮返回官网主页。</p>
+        <button id="redirect-btn">返回首页</button>
+    </div>
+</div>
+
+<script>
+    function redirectToHome() {
+        window.location.href = 'https://mcpcc.fun'; // 替换为你的首页URL
+    }
+
+    document.getElementById('redirect-btn').onclick = redirectToHome;
+</script>
+</body>
+</html>

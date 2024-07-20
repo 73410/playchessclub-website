@@ -4,6 +4,38 @@
     <link rel="stylesheet" href="static/css/mail.css">
     <title>通过邮件获取ip</title>
     <link rel="icon" href="logo.webp" type="image/webp">
+    <style>
+        .loading {
+            display: none;
+        }
+
+        .loading.show {
+            display: inline-block;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #22a6b3;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .locked {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -12,6 +44,7 @@
     </div>
     <div class="right-section">
         <h2>开始吧</h2>
+        <div id="status_message" class="statusmessage"></div>
         为了使没有qq群的玩家也能接收到服务器的消息，所以我们推出了邮件提醒服务，方便你更好的接收消息。
         <h4>在添加邮件后，我们将立即往你邮箱中发送ip</h4>
         <button id="login-btn">添加邮箱</button>
@@ -39,6 +72,9 @@
             </table>
             <br>
             <button type="submit">添加</button>
+            <div class="loading" id="loading-icon">
+                <div class="loading-spinner"></div>
+            </div>
         </form>
     </div>
 </div>
@@ -49,6 +85,8 @@
     var closeLogin = document.getElementById('close-login');
     var addContactForm = document.getElementById('add-contact-form');
     var statusMessage = document.getElementById('status_message');
+    var loadingIcon = document.getElementById('loading-icon');
+    var submitButton = addContactForm.querySelector('button[type="submit"]');
 
     loginBtn.onclick = function() {
         loginModal.classList.add('show');
@@ -70,6 +108,10 @@
         const firstName = document.getElementById('first_name').value;
         const lastName = document.getElementById('last_name').value;
 
+        // 锁定按钮并显示加载动画
+        submitButton.classList.add('locked');
+        loadingIcon.classList.add('show');
+
         try {
             const response = await fetch('https://mail.mcpcc.fun', { // 替换为您的Cloudflare Worker路径
                 method: 'POST',
@@ -83,6 +125,9 @@
                 const result = await response.json();
                 statusMessage.textContent = result.message;
                 statusMessage.classList.add('success');
+                setTimeout(() => {
+                    window.location.href = 'https://mcpcc.fun/success';
+                }, 3000);
             } else {
                 const errorResult = await response.json();
                 statusMessage.textContent = `Error: ${errorResult.message}`;
@@ -93,11 +138,9 @@
             statusMessage.classList.add('error');
         }
 
-        setTimeout(() => {
-            statusMessage.textContent = '';
-            statusMessage.classList.remove('success', 'error');
-            loginModal.classList.remove('show');
-        }, 3000);
+        // 恢复按钮状态并隐藏加载动画
+        submitButton.classList.remove('locked');
+        loadingIcon.classList.remove('show');
     };
 </script>
 </body>
