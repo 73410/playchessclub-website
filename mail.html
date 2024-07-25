@@ -126,7 +126,7 @@
                 statusMessage.classList.add('success');
                 setTimeout(() => {
                     window.location.href = 'https://mcpcc.fun/success';
-                }, 3000);
+                }, 1000);
             } else {
                 const errorResult = await response.json();
                 statusMessage.textContent = `Error: ${errorResult.message}`;
