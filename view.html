@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer">
+
+    <style type="text/css">
+        .div_a {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+        }
+
+        .tupianjuzhong {
+            clear: both;
+            display: block;
+            margin: auto;
+        }
+
+        iframe {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+
+    <!-- Website Title -->
+    <title>PCC-我的世界服务器(Minecraft)</title>
+
+    <!-- Styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/magnific-popup.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="static/picture/logo.webp">
+
+    <script async src="static/js/invisible.js"></script>
+</head>
+
+<body data-spy="scroll" data-target=".fixed-top">
+
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
+
+        <!-- Image Logo -->
+        <img src="static/picture/logo.webp" alt="加载图片失败，请刷新" width="32" height="32"> 
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#header">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#picture">风景欣赏</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" onclick="window.open('https://news.mcpcc.fun')">
+                        pcc新闻主页
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" onclick="window.open('https://afdian.com/@3b3tstudio')">
+                        赞助我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav> <!-- end of navbar -->
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <h1>风景欣赏</h1>
+                    </div> 
+                </div> 
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <div id="picture" class="filter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>风景欣赏</h2>
+                </div> 
+            </div> 
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Filter -->
+                    <div class="button-group filters-button-group">
+                        <a class="button is-checked" data-filter="*"><span>显示全部</span></a>
+                        <a class="button" data-filter=".post"><span>宣传海报</span></a>
+                        <a class="button" data-filter=".building"><span>特色建筑</span></a>
+                        <a class="button" data-filter=".building"><span>生电建筑</span></a>
+                    </div> <!-- end of button group -->
+                    <div class="grid">
+                        <div class="element-item post">
+                            <a class="popup-with-move-anim" href="#RLsrv-post"><div class="element-item-overlay"><span>Rlcraft生存服海报</span></div><img src="static/picture/rlcraft.png" alt="加载图片失败，请刷新"></a>
+                        </div>
+                        <div class="element-item post">
+                            <a class="popup-with-move-anim" href="#SBsrv-post"><div class="element-item-overlay"><span>单方块生存服海报</span></div><img src="static/picture/block.jpg" alt="加载图片失败，请刷新"></a>
+                        </div>
+                        <div class="element-item post">
+                            <a class="popup-with-move-anim" href="#creative-post"><div class="element-item-overlay"><span>创造服海报</span></div><img src="static/picture/creative.png" alt="加载图片失败，请刷新"></a>
+                        </div>
+                        <div class="element-item post">
+                            <a class="popup-with-move-anim" href="#srv1-post"><div class="element-item-overlay"><span>生存服1周目海报</span></div><img src="static/picture/srv1.jpg" alt="加载图片失败，请刷新"></a>
+                        </div>
+                        <div class="element-item post">
+                            <a class="popup-with-move-anim" href="#srv2-post"><div class="element-item-overlay"><span>生存服2周目海报</span></div><img src="static/picture/srv2.png" alt="加载图片失败，请刷新"></a>
+                        </div>
+                    </div> <!-- end of grid -->
+                    <!-- end of filter -->
+                </div> 
+            </div> 
+        </div> <!-- end of container -->
+    </div> <!-- end of filter -->
+
+    <!-- Project Lightboxes -->
+    <div id="RLsrv-post" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="row">
+            <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+            <div class="col-lg-8">
+                <img class="img-fluid" src="static/picture/rlcraft.png" alt="加载图片失败，请刷新">
+            </div> 
+            <div class="col-lg-4">
+                <h3>Rlcraft生存服海报</h3>
+                <hr class="line-heading">
+                <h6>介绍</h6>
+                <p>原来开rlcraft生存服的宣传海报</p>
+                <a class="btn-outline-reg mfp-close as-button" href="#projects">返回</a> 
+            </div> 
+        </div> 
+    </div> 
+
+    <div id="SBsrv-post" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="row">
+            <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+            <div class="col-lg-8">
+                <img class="img-fluid" src="static/picture/block.jpg" alt="加载图片失败，请刷新">
+            </div> 
+            <div class="col-lg-4">
+                <h3>单方块生存服海报</h3>
+                <hr class="line-heading">
+                <h6>介绍</h6>
+                <p>原来开单方块生存服的宣传海报</p>
+                <a class="btn-outline-reg mfp-close as-button" href="#projects">返回</a> 
+            </div> 
+        </div> 
+    </div> 
+
+    <div id="creative-post" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="row">
+            <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+            <div class="col-lg-8">
+                <img class="img-fluid" src="static/picture/creative.png" alt="加载图片失败，请刷新">
+            </div> 
+            <div class="col-lg-4">
+                <h3>创造服海报</h3>
+                <hr class="line-heading">
+                <h6>介绍</h6>
+                <p>原来开创造服的宣传海报</p>
+                <a class="btn-outline-reg mfp-close as-button" href="#projects">返回</a> 
+            </div> 
+        </div> 
+    </div> 
+
+    <div id="srv1-post" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="row">
+            <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+            <div class="col-lg-8">
+                <img class="img-fluid" src="static/picture/srv1.jpg" alt="加载图片失败，请刷新">
+            </div> 
+            <div class="col-lg-4">
+                <h3>生存服1周目海报</h3>
+                <hr class="line-heading">
+                <h6>介绍</h6>
+                <p>原来一周目生存服的宣传海报</p>
+                <a class="btn-outline-reg mfp-close as-button" href="#projects">返回</a> 
+            </div> 
+        </div> 
+    </div> 
+
+    <div id="srv2-post" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="row">
+            <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+            <div class="col-lg-8">
+                <img class="img-fluid" src="static/picture/srv2.png" alt="加载图片失败，请刷新">
+            </div> 
+            <div class="col-lg-4">
+                <h3>生存服2周目海报</h3>
+                <hr class="line-heading">
+                <h6>介绍</h6>
+                <p>现在生存服2周目海报</p>
+                <a class="btn-outline-reg mfp-close as-button" href="#projects">返回</a> 
+            </div> 
+        </div> 
+    </div> 
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small"> &copy; 2024 <a target="_blank" href="">PlayChessClub</a>丨版权所有</p>
+                </div> 
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+
+    <!-- Scripts -->
+    <script src="static/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="static/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="static/js/jquery.magnific-popup.min.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="static/js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="static/js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="static/js/scripts.js"></script> <!-- Custom scripts -->
+</body>
+
+</html>
