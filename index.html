@@ -66,21 +66,17 @@
                     <a class="nav-link page-scroll" href="#info">服务器介绍</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#status">服务器状态</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link page-scroll" href="#picture">风景欣赏</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#copyright">版权页</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" onclick="window.open('https://news.mcpcc.fun')">
                         pcc新闻主页
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link page-scroll" onclick="window.open('https://Pration.mcpcc.fun')">
-                        Pration插件
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link page-scroll" onclick="window.open('https://github.com/PlayChessClub/pccpack')">
-                        服务器数据包
                     </a>
                 </li>
                 <li class="nav-item">
@@ -89,14 +85,27 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">服务器开源内容</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://github.com/PlayChessClub/pccpack"><span class="item-text">服务器数据包</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://github.com/PlayChessClub/pccpack"><span class="item-text">Pration插件</span></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle page-scroll" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">友情外链</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="https://www.minecraft.net"><span class="item-text">Minecraft</span></a>
                         <div class="dropdown-items-divide-hr"></div>
                         <a class="dropdown-item" href="https://www.optifine.net"><span class="item-text">Optifine</span></a>
                         <div class="dropdown-items-divide-hr"></div>
-                        <a class="dropdown-item" href="https://www.ranmc.cc"><span class="item-text">桃花源服务器</span></a>
+                        <a class="dropdown-item" href="https://xz.klpbbs.net/"><span class="item-text">获取基岩版</span></a>
                         <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://afdian.com/p/0164034c016c11ebafcb52540025c377"><span class="item-text">获取PCL2启动器</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://hmcl.huangyuhui.net/"><span class="item-text">下载HMCL启动器</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://www.ranmc.cc"><span class="item-text">桃花源服务器</span></a>
                     </div>
                 </li>
             </ul>
@@ -117,18 +126,11 @@
                             <a href="https://qm.qq.com/cgi-bin/qm/qr?k=IN_EHEI0R8G_cji3laxoS_g9YxHcx1NF&jump_from=webapi&authKey=VH21pBOzskhbjIx9gc95OoCI02FIVn42saJddZebJaIkO6cQ+eVVE005lr7yos2y">
                                 <button class="btn-solid-lg page-scroll">加入qq群</button>
                             </a>
-                            <a href="https://mcpcc.fun/mail">
+                            <a href="mail">
                                 <button class="btn-solid-lg page-scroll">无QQ用户获取ip</button>
                             </a>
                              <a href="minecraft://?addExternalServer=pcc生存服|srv.mcpcc.fun:19132">
                                 <button class="btn-solid-lg page-scroll">添加服务器到列表（基岩版）</button>
-                            </a>
-                            <br>
-                            <a href="https://hmcl.huangyuhui.net/">
-                                <button class="btn-solid-lg page-scroll">下载HMCL启动器</button>
-                            </a>
-                            <a href="https://xz.klpbbs.net/">
-                                <button class="btn-solid-lg page-scroll">下载基岩版</button>
                             </a>
                         </div>
                     </div> 
@@ -153,12 +155,24 @@
                 </div> 
                 <div class="col-lg-7">
                     <div class="image-container">
-                        <img class="img-fluid" src="static/picture/a4Vyng.jpg" alt="加载图片失败，请刷新">
+                        <img class="img-fluid" src="static/picture/新生存服海报.png" alt="加载图片失败，请刷新">
                     </div> <!-- end of image-container -->
                 </div> 
             </div> 
         </div> <!-- end of container -->
     </div> <!-- end of basic-1 -->
+    <div id="status" class="filter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>服务器状态</h2>
+                </div> 
+            </div> 
+            <div class="col-lg-12" style="text-align: center;">
+                <img src="https://tietu.mclists.cn/banner/purple/7798/1.jpg" alt="加载图片失败，请刷新">
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of filter -->
     <div id="picture" class="filter">
         <div class="container">
             <div class="row">
@@ -171,6 +185,25 @@
                     <a href="view">
                         <button class="btn-solid-lg page-scroll">点击查看风景</button>
                     </a>
+                </div> 
+            </div> 
+        </div> <!-- end of container -->
+    </div> <!-- end of filter -->
+
+    
+    <div id="copyright" class="filter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>版权页</h2>
+                </div> 
+            </div> 
+            <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                    <h3>3B3T工作室版权所有</h3>
+                    <div class="image-container">
+                        <img class="img-fluid" src="static/image/logo.png" alt="加载图片失败，请刷新">
+                    </div> <!-- end of image-container -->
                 </div> 
             </div> 
         </div> <!-- end of container -->
