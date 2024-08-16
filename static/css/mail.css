@@ -7,6 +7,16 @@
     z-index: 1000; /* 确保logo位于其他内容之上 */
 }
 
+.col-lg-12 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #39404800; /* 可根据需要调整背景色 */
+    padding: 10px 0;
+    z-index: 1000; /* 确保元素在其他内容之上 */
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column; /* 改为垂直布局 */
@@ -31,7 +41,7 @@
     }
 
     .left-section {
-        flex: 4; /* 占据一半空间 */
+        flex: 3; /* 占据一半空间 */
         background-image: url('achXdg.jpg'); /* 替换为您的图片路径 */
         background-size: cover;
         background-position: center; /* 图片居中显示 */

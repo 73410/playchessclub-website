@@ -49,7 +49,7 @@
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <link href="static/css/magnific-popup.css" rel="stylesheet">
     <link href="static/css/styles.css" rel="stylesheet">
-
+    <link href="static/css/rss.css" rel="stylesheet">
     <!-- Favicon  -->
     <link rel="icon" href="static/picture/logo.webp">
 
@@ -83,6 +83,9 @@
                     <a class="nav-link page-scroll" href="#statuss">服务器状态</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#news">新闻速览</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link page-scroll" href="#picture">风景欣赏</a>
                 </li>
                 <li class="nav-item">
@@ -103,7 +106,9 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="https://github.com/PlayChessClub/pccpack"><span class="item-text">服务器数据包</span></a>
                         <div class="dropdown-items-divide-hr"></div>
-                        <a class="dropdown-item" href="https://github.com/PlayChessClub/pccpack"><span class="item-text">Pration插件</span></a>
+                        <a class="dropdown-item" href="https://pration.mcpcc.fun"><span class="item-text">Pration插件</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="https://https://github.com/73410/playchessclub-website"><span class="item-text">官网代码库</span></a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -240,6 +245,24 @@
             </div>
         </div> <!-- end of container -->
     </div> <!-- end of filter -->
+
+    <div id="news" class="filter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>新闻速览</h2>
+                </div> 
+            </div> 
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="rss-feed" class="rss-feed-container">请在浏览器中打开以浏览此部分</div>
+                    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                    <script src="static/js/rss.js"></script>
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+
     <div id="picture" class="filter">
         <div class="container">
             <div class="row">
@@ -254,8 +277,8 @@
                     </a>
                 </div> 
             </div> 
-        </div> <!-- end of container -->
-    </div> <!-- end of filter -->
+        </div> 
+    </div> 
 
     
     <div id="copyright" class="filter">
