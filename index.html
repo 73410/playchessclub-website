@@ -26,6 +26,20 @@
             height: 600px;
             border: none;
         }
+        #status {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #server-info, #player-list {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: left;
+            width: 80%;
+        }
     </style>
 
     <!-- Website Title -->
@@ -66,7 +80,7 @@
                     <a class="nav-link page-scroll" href="#info">服务器介绍</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#status">服务器状态</a>
+                    <a class="nav-link page-scroll" href="#statuss">服务器状态</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#picture">风景欣赏</a>
@@ -163,7 +177,7 @@
             </div> 
         </div> <!-- end of container -->
     </div> <!-- end of basic-1 -->
-    <div id="status" class="filter">
+    <div id="statuss" class="filter">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -171,7 +185,58 @@
                 </div> 
             </div> 
             <div class="col-lg-12" style="text-align: center;">
-                <img src="https://tietu.mclists.cn/banner/purple/7798/1.jpg" alt="加载图片失败，请刷新">
+                <div id="status">正在检查服务器状态...</div>
+                <div id="server-info"></div>
+                <div id="player-list"></div>
+                <script>
+                    async function checkServerStatus() {
+                        const serverAddress = 'srv.mcpcc.fun:25566';
+            
+                        try {
+                            const response = await fetch(`https://api.mcsrvstat.us/2/${serverAddress}`);
+                            const data = await response.json();
+            
+                            const statusDiv = document.getElementById('status');
+                            const serverInfoDiv = document.getElementById('server-info');
+                            const playerListDiv = document.getElementById('player-list');
+            
+                            if (data.online) {
+                                // 显示服务器在线状态
+                                statusDiv.innerHTML = `<span style="color: green;">服务器在线</span>`;
+            
+                                // 显示详细服务器信息
+                                serverInfoDiv.innerHTML = `
+                                    <strong>服务器消息 (MOTD):</strong> ${data.motd.clean.join('<br>')}<br>
+                                    <strong>版本:</strong> ${data.version}<br>
+                                    <strong>协议版本:</strong> ${data.protocol}<br>
+                                    <strong>主机名:</strong> ${data.hostname}<br>
+                                    <strong>端口:</strong> ${data.port}<br>
+                                    <strong>软件:</strong> ${data.software ? data.software : 'N/A'}<br>
+                                    <strong>在线玩家:</strong> ${data.players.online}/${data.players.max}<br>
+                                    <strong>服务器运行时间:</strong> ${data.debug.cachetime} 秒<br>
+                                `;
+            
+                                // 显示在线玩家列表
+                                if (data.players.online > 0 && data.players.list) {
+                                    playerListDiv.innerHTML = `<strong>当前在线玩家 (${data.players.online}):</strong><br>` + data.players.list.join(', ');
+                                } else {
+                                    playerListDiv.innerHTML = `<strong>当前在线玩家:</strong> 目前没有玩家在线。`;
+                                }
+                            } else {
+                                // 服务器离线处理
+                                statusDiv.innerHTML = '<span style="color: red;">服务器离线</span>';
+                                serverInfoDiv.innerHTML = '';
+                                playerListDiv.innerHTML = '';
+                            }
+                        } catch (error) {
+                            document.getElementById('status').innerHTML = '<span style="color: red;">获取服务器状态时出错。请稍后再试。</span>';
+                            console.error('Error:', error);
+                        }
+                    }
+            
+                    // 页面加载时自动检查服务器状态
+                    checkServerStatus();
+                </script>
             </div>
         </div> <!-- end of container -->
     </div> <!-- end of filter -->
