@@ -189,6 +189,7 @@
                     <h2>服务器状态</h2>
                 </div> 
             </div> 
+            <h4>头像暂时只支持老玩家，需要的可以联系管理员</h4>
             <div class="col-lg-12" style="text-align: center;">
                 <div id="status">正在检查服务器状态...</div>
                 <div id="server-info"></div>
@@ -227,7 +228,13 @@
             
                                 // 显示在线玩家列表
                                 if (data.players.online > 0 && data.players.list) {
-                                    playerListDiv.innerHTML = `<strong>当前在线玩家 (${data.players.online}):</strong><br>` + data.players.list.join(', ');
+                                    playerListDiv.innerHTML = `<strong>当前在线玩家 (${data.players.online}):</strong><br>`;
+                                    data.players.list.forEach(player => {
+                                        playerListDiv.innerHTML += `
+                                            <img class="player-head" src="https://r2.mcpcc.fun/faces/16x16/${player}.png" alt="${player}" title="${player}" />
+                                            ${player}<br>
+                                        `;
+                                    });
                                 } else {
                                     playerListDiv.innerHTML = `<strong>当前在线玩家:</strong> 目前没有玩家在线。`;
                                 }
