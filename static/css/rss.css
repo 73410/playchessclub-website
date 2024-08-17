@@ -1,91 +1,85 @@
-/* 全局样式 */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f5;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* RSS容器 */
-  .rss-feed-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* RSS项 */
-  .rss-item {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .rss-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* 标题 */
-  .rss-item h3 {
-    font-size: 20px;
-    margin: 0;
-    padding: 15px;
-    background-color: #4a90e2; /* 改为柔和的蓝色 */
-    color: #ffffff;
-    font-weight: 600;
-    border-bottom: 4px solid #357ABD; /* 增加一些视觉层次 */
-  }
-  
-  /* 描述部分 */
-  .rss-item .description {
-    padding: 15px;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #555;
-    max-height: 120px; /* 初始摘要高度 */
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease; /* 增加动画 */
-  }
-  
-  .rss-item .description.expanded {
-    max-height: 1000px; /* 充分的高度来显示内容 */
-    padding-bottom: 15px; /* 保持一致的内边距 */
-  }
-  
-  /* 阅读更多按钮 */
-  .rss-item .toggle-description {
-    padding: 10px 15px;
-    background-color: #f4f4f4;
-    text-align: right;
-    cursor: pointer;
-  }
-  
-  .rss-item .toggle-description a {
-    text-decoration: none;
-    color: #4a90e2;
-    font-weight: 500;
-  }
-  
-  .rss-item .toggle-description a:hover {
-    text-decoration: underline;
-  }
-  
-  /* 图片懒加载 */
-  .rss-item img.lazy {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .rss-item img.lazy.loaded {
-    opacity: 1;
-  }
-  
+
+/* RSS容器 */
+.rss-feed-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* RSS项 */
+.rss-item {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rss-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 标题 */
+.rss-item h3 {
+  font-size: 22px;
+  margin: 0;
+  padding: 20px;
+  background-color: #5A67D8; /* 柔和的紫色，与服务器状态页面一致 */
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 5px solid #434190; /* 增加视觉层次感，使用更深的紫色 */
+}
+
+/* 描述部分 */
+.rss-item .description {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  max-height: 120px; /* 初始摘要高度 */
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease; /* 增加动画 */
+}
+
+.rss-item .description.expanded {
+  max-height: 1000px; /* 充分的高度来显示内容 */
+  padding-bottom: 20px; /* 保持一致的内边距 */
+}
+
+/* 阅读更多按钮 */
+.rss-item .toggle-description {
+  padding: 15px 20px;
+  background-color: #f4f4f4;
+  text-align: right;
+  cursor: pointer;
+  border-top: 1px solid #e2e8f0;
+}
+
+.rss-item .toggle-description a {
+  text-decoration: none;
+  color: #5A67D8;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.rss-item .toggle-description a:hover {
+  color: #434190;
+  text-decoration: underline;
+}
+
+/* 图片懒加载 */
+.rss-item img.lazy {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rss-item img.lazy.loaded {
+  opacity: 1;
+}

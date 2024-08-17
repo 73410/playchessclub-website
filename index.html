@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="referrer" content="no-referrer">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style type="text/css">
         .div_a {
             width: 100%;
@@ -32,13 +32,68 @@
         }
         #server-info, #player-list {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             display: inline-block;
             text-align: left;
-            width: 80%;
+            width: 100%;
+            max-width: 600px;
+        }
+        h1, h2 {
+            color: #5A67D8;
+        }
+        .player-head {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            vertical-align: middle;
+        }
+        .player-item {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .loading {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #5A67D8;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            70% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+        }
+        .loading-text {
+            margin-top: 10px;
+            font-size: 18px;
+            animation: pulse 1.5s infinite;
+            color: #5A67D8;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #444;
         }
     </style>
 
@@ -189,9 +244,12 @@
                     <h2>服务器状态</h2>
                 </div> 
             </div> 
-            <div style="text-align: center;"><h4>头像暂时只支持老玩家，需要的可以联系管理员</h4></div>
+            <div style="text-align: center;"><p>头像暂时只支持老玩家，需要的可以联系管理员</p></div>
             <div class="col-lg-12" style="text-align: center;">
-                <div id="status">正在检查服务器状态...</div>
+                <div id="status">
+                    <div class="loading"></div>
+                    <div class="loading-text">正在检查服务器状态...</div>
+                </div>
                 <div id="server-info"></div>
                 <div id="player-list"></div>
                 <br>
@@ -212,40 +270,44 @@
             
                             if (data.online) {
                                 // 显示服务器在线状态
-                                statusDiv.innerHTML = `<span style="color: green;">服务器在线</span>`;
+                                statusDiv.innerHTML = `<span style="color: #48BB78; font-weight: 600;">服务器在线</span>`;
             
                                 // 显示详细服务器信息
                                 serverInfoDiv.innerHTML = `
-                                    <strong>服务器消息 (MOTD):</strong> ${data.motd.clean.join('<br>')}<br>
-                                    <strong>版本:</strong> ${data.version}<br>
-                                    <strong>协议版本:</strong> ${data.protocol}<br>
-                                    <strong>主机名:</strong> ${data.hostname}<br>
-                                    <strong>端口:</strong> ${data.port}<br>
-                                    <strong>软件:</strong> ${data.software ? data.software : 'N/A'}<br>
-                                    <strong>在线玩家:</strong> ${data.players.online}/${data.players.max}<br>
-                                    <strong>服务器运行时间:</strong> ${data.debug.cachetime} 秒<br>
+                                    <div><span class="info-label">服务器消息 (MOTD):</span> ${data.motd.clean.join('<br>')}</div>
+                                    <div><span class="info-label">版本:</span> ${data.version}</div>
+                                    <div><span class="info-label">协议版本:</span> ${data.protocol}</div>
+                                    <div><span class="info-label">主机名:</span> ${data.hostname}</div>
+                                    <div><span class="info-label">端口:</span> ${data.port}</div>
+                                    <div><span class="info-label">软件:</span> ${data.software ? data.software : 'N/A'}</div>
+                                    <div><span class="info-label">在线玩家:</span> ${data.players.online}/${data.players.max}</div>
+                                    <div><span class="info-label">Ping 值:</span> ${data.debug.ping} 毫秒</div>
+                                    <div><span class="info-label">IP 地址:</span> ${serverAddress}</div>
+                                    <div><span class="info-label">服务器运行时间:</span> ${data.debug.cachetime} 秒</div>
                                 `;
             
-                                // 显示在线玩家列表
+                                // 显示在线玩家列表和头像
                                 if (data.players.online > 0 && data.players.list) {
-                                    playerListDiv.innerHTML = `<strong>当前在线玩家 (${data.players.online}):</strong><br>`;
+                                    playerListDiv.innerHTML = `<div class="info-label">当前在线玩家 (${data.players.online}):</div>`;
                                     data.players.list.forEach(player => {
                                         playerListDiv.innerHTML += `
-                                            <img class="player-head" src="https://r2.mcpcc.fun/faces/16x16/${player}.png" alt="${player}" title="${player}" />
-                                            ${player}<br>
+                                            <div class="player-item">
+                                                <img class="player-head" src="https://r2.mcpcc.fun/faces/32x32/${player}.png" alt="${player}" title="${player}" />
+                                                <span>${player}</span>
+                                            </div>
                                         `;
                                     });
                                 } else {
-                                    playerListDiv.innerHTML = `<strong>当前在线玩家:</strong> 目前没有玩家在线。`;
+                                    playerListDiv.innerHTML = `<div class="info-label">当前在线玩家:</div> 目前没有玩家在线。`;
                                 }
                             } else {
                                 // 服务器离线处理
-                                statusDiv.innerHTML = '<span style="color: red;">服务器离线(有时候会误判，请刷新重试)</span>';
+                                statusDiv.innerHTML = '<span style="color: #E53E3E; font-weight: 600;">服务器离线(有时会卡，请稍后刷新重试)</span>';
                                 serverInfoDiv.innerHTML = '';
                                 playerListDiv.innerHTML = '';
                             }
                         } catch (error) {
-                            document.getElementById('status').innerHTML = '<span style="color: red;">获取服务器状态时出错。请稍后再试。</span>';
+                            document.getElementById('status').innerHTML = '<span style="color: #E53E3E; font-weight: 600;">获取服务器状态时出错。请稍后再试。</span>';
                             console.error('Error:', error);
                         }
                     }
