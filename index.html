@@ -193,6 +193,10 @@
                 <div id="status">正在检查服务器状态...</div>
                 <div id="server-info"></div>
                 <div id="player-list"></div>
+                <br>
+                <a href="http://srv.mcpcc.fun:8123">
+                    <button class="btn-solid-lg page-scroll">打开卫星地图查看更多</button>
+                </a>
                 <script>
                     async function checkServerStatus() {
                         const serverAddress = 'srv.mcpcc.fun:25566';
@@ -229,7 +233,7 @@
                                 }
                             } else {
                                 // 服务器离线处理
-                                statusDiv.innerHTML = '<span style="color: red;">服务器离线</span>';
+                                statusDiv.innerHTML = '<span style="color: red;">服务器离线(有时候会误判，请刷新重试)</span>';
                                 serverInfoDiv.innerHTML = '';
                                 playerListDiv.innerHTML = '';
                             }

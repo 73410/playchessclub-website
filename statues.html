@@ -28,6 +28,11 @@
         h1, h2 {
             color: #333;
         }
+        .player-head {
+            width: 16px;
+            height: 16px;
+            margin: 2px;
+        }
     </style>
 </head>
 <body>
@@ -68,9 +73,15 @@
                         <strong>服务器运行时间:</strong> ${data.debug.cachetime} 秒<br>
                     `;
 
-                    // 显示在线玩家列表
+                    // 显示在线玩家列表和头像
                     if (data.players.online > 0 && data.players.list) {
-                        playerListDiv.innerHTML = `<strong>当前在线玩家 (${data.players.online}):</strong><br>` + data.players.list.join(', ');
+                        playerListDiv.innerHTML = `<strong>当前在线玩家 (${data.players.online}):</strong><br>`;
+                        data.players.list.forEach(player => {
+                            playerListDiv.innerHTML += `
+                                <img class="player-head" src="http://150.158.114.95:8123/tiles/faces/16x16/${player}.png" alt="${player}" title="${player}" />
+                                ${player}<br>
+                            `;
+                        });
                     } else {
                         playerListDiv.innerHTML = `<strong>当前在线玩家:</strong> 目前没有玩家在线。`;
                     }
