@@ -7,10 +7,10 @@ function toggleDescription(event) {
   const description = event.target.closest('.rss-item').querySelector('.description');
   if (description.classList.contains('expanded')) {
     description.classList.remove('expanded');
-    event.target.textContent = '展开全文';
+    event.target.textContent = '展开预览';
   } else {
     description.classList.add('expanded');
-    event.target.textContent = '收起全文';
+    event.target.textContent = '收起预览';
   }
 }
 
@@ -64,7 +64,7 @@ function renderRSSFeed(rssData) {
         <h3><a href="${link}" target="_blank">${title}</a></h3>
         ${imageUrl ? `<img class="lazy" data-src="${imageUrl}" alt="${title}">` : ''}
         <div class="description">${descriptionHtml}</div>
-        <div class="toggle-description"><a href="javascript:void(0)">展开全文</a></div>
+        <div class="toggle-description"><a href="javascript:void(0)">展开预览</a></div>
       </div>
     `;
   });
