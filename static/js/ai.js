@@ -21,7 +21,7 @@ async function sendMessage(message) {
     const data = await response.json();
     return data.reply;
   } catch (error) {
-    console.error('Error occurred while sending message:', error.message);
+    console.error('Error occurred while sending message:', error);  // 打印详细错误信息
     return 'There was an error with the server. Please try again later.';
   }
 }
@@ -46,6 +46,11 @@ sendBtn.addEventListener('click', async () => {
     // 获取AI回复并显示
     const aiResponse = await sendMessage(message);
     addMessage('bot', aiResponse);
+
+    // 检查是否包含模型切换信息
+    if (aiResponse.includes("gpt-4o-mini")) {
+      addMessage('bot', "Notice: The model has switched to gpt-4o-mini due to gpt-4o rate limit.");
+    }
   }
 });
 
