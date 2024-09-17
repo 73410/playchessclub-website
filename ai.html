@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chatbot</title>
+  <!-- CSS 路径 -->
+  <link rel="stylesheet" href="static/css/ai.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="model-dropdown">
+      <button id="dropdown-btn" class="dropdown-btn">
+        GPT-4o <span class="arrow"></span>
+      </button>
+      <div id="model-dropdown-content" class="dropdown-content hidden">
+        <div class="model-option" data-model="gpt-4o">
+          <div class="model-title">GPT-4o</div>
+          <div class="model-description">适合处理复杂任务</div>
+        </div>
+        <div class="model-option" data-model="gpt-4o-mini">
+          <div class="model-title">GPT-4o-mini</div>
+          <div class="model-description">推理速度更快</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 添加清除会话按钮 -->
+    <button id="clear-btn" class="clear-btn">清除会话</button>
+
+    <div id="chat-box" class="chat-box">
+      <div id="messages" class="messages"></div>
+    </div>
+
+    <div class="input-container">
+      <input type="text" id="user-input" placeholder="请输入您的消息..." autofocus>
+      <button id="send-btn">发送</button>
+    </div>
+
+    <div id="loading" class="loading hidden"> 
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript 路径 -->
+  <script src="static/js/ai.js"></script>
+</body>
+</html>
