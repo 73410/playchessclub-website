@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>AI Chatbot</title>
-  <!-- CSS 路径 -->
+  <title>AI 聊天机器人</title>
+  <!-- 引入 CSS 文件 -->
   <link rel="stylesheet" href="static/css/ai.css">
+  <!-- 引入 Google 字体 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+  <!-- 引入 marked.js 和 DOMPurify -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
 </head>
 <body>
   <div class="chat-container">
@@ -18,13 +23,13 @@
           <div class="model-description">适合处理复杂任务</div>
         </div>
         <div class="model-option" data-model="gpt-4o-mini">
-          <div class="model-title">GPT-4o-mini</div>
+          <div class="model-title">gpt-4o-mini</div>
           <div class="model-description">推理速度更快</div>
         </div>
       </div>
     </div>
 
-    <!-- 添加清除会话按钮 -->
+    <!-- 清除会话按钮 -->
     <button id="clear-btn" class="clear-btn">清除会话</button>
 
     <div id="chat-box" class="chat-box">
@@ -43,7 +48,7 @@
     </div>
   </div>
 
-  <!-- JavaScript 路径 -->
+  <!-- 引入 JavaScript 文件 -->
   <script src="static/js/ai.js"></script>
 </body>
 </html>
