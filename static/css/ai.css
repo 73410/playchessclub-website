@@ -1,47 +1,77 @@
+/* 导入 Google 字体 */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* 通用样式重置 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 页面主体样式 */
 body {
-  font-family: 'Microsoft YaHei', sans-serif;
-  background-color: #f0f0f0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f2f4f5; /* Lighter background color for a cleaner look */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+/* 聊天容器样式 */
 .chat-container {
   background-color: #ffffff;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px; /* Adjusted to make it wider */
   height: 85%;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 15px; /* More rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Slightly stronger shadow */
   position: relative;
+  padding: 20px; /* Padding for better spacing */
 }
 
+/* 模型选择下拉框样式 */
 .model-dropdown {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 25px; /* Slightly lower positioning */
+  left: 25px;
 }
 
-.dropdown-btn {
-  background-color: #f4f4f4;
+/* 清除会话按钮样式 */
+.clear-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  padding: 12px 25px; /* Larger padding for button */
+  background-color: #ff5c5c; /* Slightly softer red */
+  color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 30px; /* Rounded pill shape */
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background-color: #ff4444; /* Hover effect */
+}
+
+/* 下拉按钮样式 */
+.dropdown-btn {
+  background-color: #4CAF50;
+  border: 1px solid #0b5c0d; /* Adding border for a cleaner look */
+  padding: 12px 20px;
+  border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
+  width: 220px; /* Slightly wider */
+}
+
+.dropdown-btn:hover {
+  background-color: #f0f0f0;
 }
 
 .arrow {
@@ -53,37 +83,38 @@ body {
   transform: rotate(45deg);
 }
 
+/* 下拉菜单内容 */
 .dropdown-content {
   background-color: white;
   position: absolute;
-  top: 50px;
+  top: 55px;
   left: 0;
-  width: 220px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
+  width: 240px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* More rounded corners */
   z-index: 1;
-  padding: 10px;
-  /* 移除了 display: none; */
+  padding: 15px; /* More padding */
   flex-direction: column;
 }
 
 .dropdown-content .model-option {
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
 }
 
 .dropdown-content .model-option:hover {
-  background-color: #f1f1f1;
+  background-color: #f9f9f9;
 }
 
 .dropdown-content .model-title {
   font-weight: bold;
+  font-size: 16px; /* Increased font size */
 }
 
 .dropdown-content .model-description {
-  font-size: 12px;
+  font-size: 14px; /* Increased size */
   color: gray;
 }
 
@@ -95,136 +126,86 @@ body {
   background-color: #d9e9ff;
 }
 
-/* 清除会话按钮样式 */
-.clear-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.clear-btn:hover {
-  background-color: #d32f2f;
-}
-
+/* 消息框样式 */
 .chat-box {
   flex: 1;
-  padding: 20px;
+  padding: 20px; /* More padding for better spacing */
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  background-color: #fafafa; /* Light background for message box */
+  border-radius: 10px; /* Rounded edges for message box */
 }
 
 .messages {
   display: flex;
   flex-direction: column;
+  gap: 10px; /* Adding some gap between messages */
 }
 
+/* 消息气泡样式 */
 .message {
-  margin: 10px 0;
-  padding: 12px;
-  border-radius: 20px;
+  margin: 8px 0;
+  padding: 12px 16px;
+  border-radius: 10px;
   max-width: 75%;
-  line-height: 1.5;
+  line-height: 1.6; /* Increased line height for readability */
   font-size: 16px;
   word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .message.user {
   align-self: flex-end;
-  background-color: #007bff;
-  color: white;
+  background-color: #dcf8c6;
+  color: #000;
 }
 
 .message.bot {
   align-self: flex-start;
-  background-color: #e5e5ea;
-  color: #333;
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #eee; /* Adding a light border for bot messages */
 }
 
+/* 输入区域样式 */
 .input-container {
   display: flex;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #e5e5ea;
+  padding: 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 12px 12px;
 }
 
 input {
   flex: 1;
   padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
   font-size: 16px;
   outline: none;
   margin-right: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 input:focus {
-  border-color: #007bff;
+  border-color: #4CAF50;
 }
 
 button {
   padding: 15px 20px;
-  background-color: #007bff;
+  background-color: #4CAF50;
   border: none;
   color: white;
-  border-radius: 20px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
 }
 
 button:active {
-  background-color: #004494;
-}
-
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.loading.hidden {
-  display: none;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
-  background-color: #007bff;
-  border-radius: 50%;
-  animation: bounce 1.2s infinite ease-in-out;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1);
-  }
-}
-
-@media (max-width: 768px) {
-  .chat-container {
-    width: 95%;
-    height: 90%;
-  }
-
-  input, button {
-    font-size: 14px;
-  }
+  background-color: #3e8e41;
 }

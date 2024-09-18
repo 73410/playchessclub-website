@@ -10,9 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearBtn = document.getElementById('clear-btn');
   let selectedModel = 'gpt-4o';  // 默认模型
 
+  // 定义系统提示词
+  const systemPrompt = '你是我的世界pcc服务器的助理机器人，你需要表明你是什么模型。接下来会给你一些数据以便于你解答玩家问题。数据：1. 我们服务器的服主是 chen_xigua，管理员团队有：brockh090、Vex、Kehuan1、XINGKONGLZC。2. 我们服务器插件列表：CatSeedLogin, CMILib, CoreProtect, CustomCrops, dynmap, DynMap_Residence, EClean, Econoblocks, Essentials, GSit, HeadDatabase, ItemsAdder, LoneLibs, Multiverse-Core, Newkit, NoMoreCooked, Pcc_limbo_system, Permission, PlayerTitle, PlugManX, ProtocolLib, qsaddon-dynmap, QuickShop-Hikari, Residence, shop, Vault, ViaBackwards, ViaVersion。3. 我们服务器十一活动正在进行，详细见公告。';
+
   // 初始化对话历史
   let conversation = [
-    { role: 'system', content: '你是我的世界pcc服务器的助理机器人，你需要表明你是什么模型。接下来会给你一些数据以便于你解答玩家问题。数据：1.我们服务器的服主是chen_xigua,管理员团队有：brockh090、Vex、Kehuan1、XINGKONGLZC。2.我们服务器插件列表：CatSeedLogin, CMILib, CoreProtect, CustomCrops, dynmap, DynMap_Residence, EClean, Econoblocks, Essentials, GSit,HeadDatabase, ItemsAdder, LoneLibs, Multiverse-Core, Newkit, NoMoreCooked, Pcc_limbo_system, Permission, PlayerTitle, PlugManX,ProtocolLib, qsaddon-dynmap, QuickShop-Hikari, Residence, shop, Vault, ViaBackwards, ViaVersion。3.我们服务器十一活动正在进行，详细见公告' }];
+    { role: 'system', content: systemPrompt }
+  ];
 
   // 初始化时隐藏加载动画
   hideLoadingIndicator();
@@ -43,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   clearBtn.addEventListener('click', () => {
     // 重置对话历史
     conversation = [
-      { role: 'system', content: 'You are a helpful assistant.' }
+      { role: 'system', content: systemPrompt }
     ];
     // 清空聊天窗口
     messagesDiv.innerHTML = '';
@@ -52,7 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // 发送消息到后端，并接收AI的回复
   async function sendMessage(modelChoice) {
     showLoadingIndicator();  // 发送消息时显示加载动画
+
+    // 确保系统提示词在 conversation 的第一项
+    if (conversation[0].role !== 'system') {
+      conversation.unshift({
+        role: 'system',
+        content: systemPrompt
+      });
+    }
+
     try {
+      // 输出 conversation 数组，供调试
+      console.log('Sending conversation:', conversation);
+
       const response = await fetch('https://openai.mcpcc.fun/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -90,7 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function addMessage(sender, message) {
     const div = document.createElement('div');
     div.className = `message ${sender}`;
-    div.textContent = message;
+
+    if (sender === 'bot') {
+      // 使用 marked.js 渲染 Markdown，并使用 DOMPurify 进行清理
+      const htmlContent = DOMPurify.sanitize(marked.parse(message));
+      div.innerHTML = htmlContent;
+    } else {
+      // 用户消息不需要 Markdown 渲染
+      div.textContent = message;
+    }
+
     messagesDiv.appendChild(div);
     chatBox.scrollTop = chatBox.scrollHeight;  // 滚动到底部
 
@@ -100,7 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 控制对话历史长度，保留最近的 20 条消息
     if (conversation.length > 20) {
-      conversation.splice(1, conversation.length - 20); // 保留系统消息和最近的 19 条对话
+      // 计算需要删除的消息数量
+      const messagesToRemove = conversation.length - 20;
+      // 从索引 1 开始删除，保留系统提示词
+      conversation.splice(1, messagesToRemove);
     }
   }
 
