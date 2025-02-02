@@ -44,7 +44,7 @@
             max-width: 600px;
         }
         h1, h2 {
-            color: #5A67D8;
+            color: #FFD700;
         }
         .player-head {
             width: 32px;
@@ -65,7 +65,7 @@
             height: 40px;
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
-            border-top-color: #5A67D8;
+            border-top-color: #FFD700;
             animation: spin 1s ease-in-out infinite;
             margin-bottom: 10px;
         }
@@ -91,7 +91,7 @@
             margin-top: 10px;
             font-size: 18px;
             animation: pulse 1.5s infinite;
-            color: #5A67D8;
+            color: #FFD700;
         }
         .info-label {
             font-weight: 600;
@@ -294,10 +294,8 @@
                                 serverInfoDiv.innerHTML = `
                                     <div><span class="info-label">服务器消息 (MOTD):</span> ${data.motd.clean.join('<br>')}</div>
                                     <div><span class="info-label">版本:</span> ${data.version}</div>
-                                    <div><span class="info-label">协议版本:</span> ${data.protocol}</div>
                                     <div><span class="info-label">软件:</span> ${data.software ? data.software : 'N/A'}</div>
                                     <div><span class="info-label">在线玩家:</span> ${data.players.online}/${data.players.max}</div>
-                                    <div><span class="info-label">Ping 值:</span> ${data.debug.ping} 毫秒</div>
                                     <div><span class="info-label">服务器运行时间:</span> ${data.debug.cachetime} 秒</div>
                                 `;
             
