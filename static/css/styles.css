@@ -109,7 +109,7 @@ h6 {
 }
 
 a {
-	color: #78bce9;
+	color: #bda102;
 	text-decoration: underline;
 }
 
@@ -1739,13 +1739,13 @@ input[type='checkbox'] {
 .copyright {
 	padding-top: 1rem;
 	padding-bottom: 0.5rem;
-	background-color: #00bcd4;
+	background-color: #c2ac33;
 	text-align: center;
 }
 
 .copyright p,
 .copyright a {
-	color: #dfe5ec;
+	color: #ffffff;
 	text-decoration: none;
 }
 
