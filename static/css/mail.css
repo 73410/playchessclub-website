@@ -42,7 +42,7 @@
 
     .left-section {
         flex: 3; /* 占据一半空间 */
-        background-image: url('../picture/old.jpg'); /* 替换为您的图片路径 */
+        background-image: url('https://image.mcpcc.fun/i/2025/02/04/yvt1dz.jpg'); /* 替换为您的图片路径 */
         background-size: cover;
         background-position: center; /* 图片居中显示 */
         background-repeat: no-repeat;
