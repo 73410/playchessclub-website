@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态密码生成器</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <dialog id="my_modal_2" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">登录验证器已关闭</h3>
+            <p class="py-4">由于你超过10分钟未操作验证器，现已自动关闭</p>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>关闭</button>
+        </form>
+    </dialog>
+
+    <script>
+        // 页面加载完成后自动打开弹窗
+        window.addEventListener('load', function() {
+            my_modal_2.showModal();
+        });
+
+        // 监听弹窗关闭事件
+        my_modal_2.addEventListener('close', function() {
+            // 延迟100ms后关闭窗口，给过渡动画一点时间
+            setTimeout(() => {
+                window.close();
+            }, 100);
+        });
+    </script>
+</body>
+</html>
