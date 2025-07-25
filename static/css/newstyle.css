@@ -1,0 +1,183 @@
+/*
+ * New style sheet for PlayChessClub website refresh
+ *
+ * This stylesheet applies a modern, minimalist aesthetic to the existing
+ * HTML structure without changing any of the underlying functionality. It
+ * uses a light colour palette, rounded corners and gentle shadows to
+ * emphasise content sections, and introduces a responsive navigation
+ * layout. The hero section makes use of a full‑width background image
+ * defined on the relevant element in the HTML. Colours are defined as
+ * variables for easy tweaking.
+ */
+
+/* Root variables for colours and fonts */
+:root {
+  --colour-background: #f9fafb;
+  --colour-primary: #4f46e5;   /* Indigo accent */
+  --colour-secondary: #6366f1; /* Slightly lighter indigo */
+  --colour-text: #1f2937;      /* Dark grey for body text */
+  --colour-muted: #6b7280;     /* Muted grey for secondary text */
+  --colour-surface: #ffffff;   /* Card backgrounds */
+  --border-radius: 12px;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--colour-background);
+  color: var(--colour-text);
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* Navigation bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--colour-surface);
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar .nav-links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: var(--colour-text);
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius);
+  transition: background 0.3s, color 0.3s;
+}
+.navbar .nav-links li a:hover,
+.navbar .nav-links li a.active {
+  background: var(--colour-primary);
+  color: #ffffff;
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 60vh;
+  color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+.hero h1 {
+  font-size: 3rem;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+.hero p {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Content sections */
+.section {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.card {
+  background: var(--colour-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Server status cards */
+#server-info, #player-list {
+  background: var(--colour-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+#status {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.info-label {
+  font-weight: 600;
+  color: var(--colour-muted);
+}
+
+/* Player list */
+.player-item {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.player-head {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.75rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 1000px;
+}
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background: var(--colour-surface);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--colour-muted);
+  margin-top: 2rem;
+  box-shadow: var(--box-shadow);
+}
