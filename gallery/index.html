@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <meta name="description" content="浏览 PlayChessClub 的服务器海报、玩家建筑与社区风景。">
+  <meta name="theme-color" content="#0d1511">
+  <title>风景画廊 · PlayChessClub</title>
+  <link rel="icon" href="assets/images/brand/pcc.webp" type="image/webp">
+  <script src="assets/scripts/theme.js"></script>
+  <link rel="stylesheet" href="assets/styles/tokens.css">
+  <link rel="stylesheet" href="assets/styles/site.css">
+  <link rel="stylesheet" href="assets/styles/pages/gallery.css">
+  <script src="assets/scripts/site-shell.js" defer></script>
+  <script src="assets/scripts/gallery.js" defer></script>
+</head>
+<body>
+  <pcc-header></pcc-header>
+  <main id="main-content">
+    <header class="page-hero">
+      <div class="container page-hero__inner">
+        <div>
+          <span class="eyebrow">PCC 世界档案</span>
+          <h1>风景画廊</h1>
+          <p class="lead">从服务器宣传海报到玩家亲手完成的建筑，这里收藏着 PlayChessClub 的共同记忆。</p>
+        </div>
+        <div class="page-hero__mark" aria-hidden="true"><img src="assets/images/brand/pcc.webp" alt=""></div>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">浏览作品</span>
+          <h2 id="gallery-heading">服务器影像</h2>
+          <p>选择分类筛选内容，点击任意图片可查看大图。</p>
+        </div>
+        <div class="filter-bar" data-gallery-filters aria-label="画廊分类">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">全部</button>
+          <button class="chip" type="button" data-filter="poster" aria-pressed="false">宣传海报</button>
+          <button class="chip" type="button" data-filter="build" aria-pressed="false">玩家建筑</button>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-item" data-gallery-item data-category="poster" data-category-label="宣传海报" data-title="RLCraft 生存服海报" data-full="assets/images/gallery/posters/rlcraft.png">
+            <button type="button"><img src="assets/images/gallery/posters/rlcraft.png" alt="RLCraft 生存服宣传海报" loading="lazy"><span class="gallery-item__caption"><strong>RLCraft 生存服</strong><span>宣传海报</span></span></button>
+          </article>
+          <article class="gallery-item" data-gallery-item data-category="poster" data-category-label="宣传海报" data-title="单方块生存服海报" data-full="assets/images/gallery/posters/block.jpg">
+            <button type="button"><img src="assets/images/gallery/posters/block.jpg" alt="单方块生存服宣传海报" loading="lazy"><span class="gallery-item__caption"><strong>单方块生存服</strong><span>宣传海报</span></span></button>
+          </article>
+          <article class="gallery-item" data-gallery-item data-category="poster" data-category-label="宣传海报" data-title="创造服海报" data-full="assets/images/gallery/posters/creative.png">
+            <button type="button"><img src="assets/images/gallery/posters/creative.png" alt="创造服宣传海报" loading="lazy"><span class="gallery-item__caption"><strong>创造服</strong><span>宣传海报</span></span></button>
+          </article>
+          <article class="gallery-item" data-gallery-item data-category="poster" data-category-label="宣传海报" data-title="生存服第一周目海报" data-full="assets/images/gallery/posters/survival-1.jpg">
+            <button type="button"><img src="assets/images/gallery/posters/survival-1.jpg" alt="生存服第一周目宣传海报" loading="lazy"><span class="gallery-item__caption"><strong>生存服第一周目</strong><span>宣传海报</span></span></button>
+          </article>
+          <article class="gallery-item" data-gallery-item data-category="poster" data-category-label="宣传海报" data-title="生存服第二周目海报" data-full="assets/images/gallery/posters/survival-2.png">
+            <button type="button"><img src="assets/images/gallery/posters/survival-2.png" alt="生存服第二周目宣传海报" loading="lazy"><span class="gallery-item__caption"><strong>生存服第二周目</strong><span>宣传海报</span></span></button>
+          </article>
+          <article class="gallery-item" data-gallery-item data-category="build" data-category-label="玩家建筑" data-title="玩家建筑" data-full="assets/images/gallery/builds/player-build.jpg">
+            <button type="button"><img src="assets/images/gallery/builds/player-build.jpg" alt="PCC 玩家建筑" loading="lazy"><span class="gallery-item__caption"><strong>玩家建筑</strong><span>风景一角</span></span></button>
+          </article>
+          <article class="gallery-item" data-gallery-item data-category="build" data-category-label="玩家建筑" data-title="星河工会大厅" data-full="assets/images/gallery/builds/guild-hall.png">
+            <button type="button"><img src="assets/images/gallery/builds/guild-hall.png" alt="星河工会大厅" loading="lazy"><span class="gallery-item__caption"><strong>星河工会大厅</strong><span>玩家建筑</span></span></button>
+          </article>
+          <article class="gallery-item" data-gallery-item data-category="build" data-category-label="玩家建筑" data-title="玩家商店" data-full="assets/images/gallery/builds/player-shop.jpg">
+            <button type="button"><img src="assets/images/gallery/builds/player-shop.jpg" alt="PCC 玩家商店" loading="lazy"><span class="gallery-item__caption"><strong>玩家商店</strong><span>玩家建筑</span></span></button>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="gallery-dialog" data-gallery-dialog aria-labelledby="gallery-dialog-title">
+    <div class="gallery-dialog__inner">
+      <button class="icon-button gallery-dialog__close" type="button" data-dialog-close aria-label="关闭大图">×</button>
+      <div class="gallery-dialog__image-wrap"><img data-dialog-image alt=""></div>
+      <div class="gallery-dialog__content">
+        <span class="eyebrow" data-dialog-category></span>
+        <h2 id="gallery-dialog-title" data-dialog-title></h2>
+        <p class="muted">PlayChessClub 服务器影像档案。</p>
+      </div>
+    </div>
+  </dialog>
+
+  <pcc-footer></pcc-footer>
+</body>
+</html>

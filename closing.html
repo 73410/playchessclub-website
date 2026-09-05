@@ -1,36 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>动态密码生成器</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="./">
+  <meta name="redirect-target" content="session-closed/"><meta http-equiv="refresh" content="2; url=session-closed/">
+  <link rel="canonical" href="session-closed/"><title>正在前往会话关闭页 · PlayChessClub</title>
+  <script src="assets/scripts/theme.js"></script><link rel="stylesheet" href="assets/styles/tokens.css"><link rel="stylesheet" href="assets/styles/site.css">
+  <script src="assets/scripts/redirect.js"></script>
 </head>
-<body>
-    <dialog id="my_modal_2" class="modal">
-        <div class="modal-box">
-            <h3 class="text-lg font-bold">登录验证器已关闭</h3>
-            <p class="py-4">由于你超过10分钟未操作验证器，现已自动关闭</p>
-        </div>
-        <form method="dialog" class="modal-backdrop">
-            <button>关闭</button>
-        </form>
-    </dialog>
-
-    <script>
-        // 页面加载完成后自动打开弹窗
-        window.addEventListener('load', function() {
-            my_modal_2.showModal();
-        });
-
-        // 监听弹窗关闭事件
-        my_modal_2.addEventListener('close', function() {
-            // 延迟100ms后关闭窗口，给过渡动画一点时间
-            setTimeout(() => {
-                window.close();
-            }, 100);
-        });
-    </script>
-</body>
+<body><main class="feedback-shell"><section class="container feedback-card card"><img src="assets/images/brand/pcc.webp" alt="PlayChessClub" width="72" height="72"><h1>页面已迁移</h1><p>正在前往新的会话关闭页。</p><a class="button" href="session-closed/">立即前往</a></section></main></body>
 </html>

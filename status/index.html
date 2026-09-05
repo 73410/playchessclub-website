@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <meta name="description" content="查看 PlayChessClub Minecraft 服务器的实时在线状态与玩家信息。">
+  <meta name="theme-color" content="#0d1511">
+  <title>服务器状态 · PlayChessClub</title>
+  <link rel="icon" href="assets/images/brand/pcc.webp" type="image/webp">
+  <script src="assets/scripts/theme.js"></script>
+  <link rel="stylesheet" href="assets/styles/tokens.css">
+  <link rel="stylesheet" href="assets/styles/site.css">
+  <script src="assets/scripts/site-shell.js" defer></script>
+  <script src="assets/scripts/server-status.js" defer></script>
+</head>
+<body>
+  <pcc-header></pcc-header>
+  <main id="main-content">
+    <header class="page-hero">
+      <div class="container page-hero__inner">
+        <div>
+          <span class="eyebrow">实时信息</span>
+          <h1>Minecraft 服务器状态</h1>
+          <p class="lead">检查服务器是否在线、当前版本以及玩家人数。状态由第三方服务获取，可能存在短暂延迟。</p>
+          <ul class="tag-list" aria-label="当前查询服务器"><li class="tag">map.mcpcc.fun:17888</li></ul>
+        </div>
+        <div class="page-hero__mark" aria-hidden="true"><img src="assets/images/brand/pcc.webp" alt=""></div>
+      </div>
+    </header>
+    <section class="section" aria-labelledby="status-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center">
+          <span class="eyebrow">连接状态</span>
+          <h2 id="status-heading">当前服务器信息</h2>
+          <p>点击刷新可重新请求最新状态。</p>
+        </div>
+        <div class="card card--padded status-panel">
+          <div class="server-status" data-server-status data-server="map.mcpcc.fun:17888" aria-live="polite">
+            <div class="loading-row" role="status"><span class="spinner"></span><span>正在检查服务器状态…</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <pcc-footer></pcc-footer>
+</body>
+</html>

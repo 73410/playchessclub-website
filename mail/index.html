@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <meta name="description" content="通过邮件获取 PlayChessClub 服务器 IP 与后续通知。">
+  <meta name="theme-color" content="#0d1511">
+  <title>邮件订阅 · PlayChessClub</title>
+  <link rel="icon" href="assets/images/brand/pcc.webp" type="image/webp">
+  <script src="assets/scripts/theme.js"></script>
+  <link rel="stylesheet" href="assets/styles/tokens.css">
+  <link rel="stylesheet" href="assets/styles/site.css">
+  <script src="assets/scripts/site-shell.js" defer></script>
+  <script src="assets/scripts/mail.js" defer></script>
+</head>
+<body>
+  <pcc-header></pcc-header>
+  <main id="main-content">
+    <header class="page-hero">
+      <div class="container page-hero__inner">
+        <div>
+          <span class="eyebrow">无 QQ 用户通道</span>
+          <h1>通过邮件获取服务器 IP</h1>
+          <p class="lead">没有加入 QQ 群也没关系。添加邮箱后，我们会立即向你发送服务器 IP，方便接收后续消息。</p>
+        </div>
+        <div class="page-hero__mark" aria-hidden="true"><img src="assets/images/brand/pcc.webp" alt=""></div>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="mail-form-title">
+      <div class="container two-column two-column--top">
+        <div>
+          <span class="eyebrow">订阅说明</span>
+          <h2>只需填写三项信息</h2>
+          <p class="lead">姓名用于帮助管理员识别玩家。如果不方便填写真实姓名，可以将姓氏填写为任意称呼，名字填写游戏内昵称。</p>
+          <div class="notice notice--warning">邮件发送后若没有收到，请检查垃圾邮件文件夹，避免邮件被错误拦截。</div>
+          <div class="step-list">
+            <article class="card feature-card"><span class="feature-card__icon">01</span><h3>填写信息</h3><p>提供有效邮箱与便于识别的玩家名称。</p></article>
+            <article class="card feature-card"><span class="feature-card__icon">02</span><h3>查收邮件</h3><p>提交成功后，服务器 IP 会发送到你的邮箱。</p></article>
+          </div>
+        </div>
+        <form class="card card--padded form-grid" data-mail-form aria-labelledby="mail-form-title">
+          <div>
+            <span class="eyebrow">开始订阅</span>
+            <h2 id="mail-form-title">添加联系人</h2>
+            <p class="muted">所有字段均为必填项。</p>
+          </div>
+          <div class="field">
+            <label for="email">邮箱地址</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="last-name">姓</label>
+              <input class="input" id="last-name" name="last_name" type="text" autocomplete="family-name" placeholder="例如：PCC" maxlength="40" required>
+            </div>
+            <div class="field">
+              <label for="first-name">名或游戏昵称</label>
+              <input class="input" id="first-name" name="first_name" type="text" autocomplete="given-name" placeholder="你的游戏昵称" maxlength="40" required>
+            </div>
+          </div>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+          <button class="button" type="submit">添加邮箱</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <pcc-footer></pcc-footer>
+</body>
+</html>

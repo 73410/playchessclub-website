@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <meta name="description" content="PlayChessClub 通用 AI 助手。">
+  <meta name="theme-color" content="#0d1511">
+  <title>通用 AI 助手 · PlayChessClub</title>
+  <link rel="icon" href="assets/images/brand/pcc.webp" type="image/webp">
+  <script src="assets/scripts/theme.js"></script>
+  <link rel="stylesheet" href="assets/styles/tokens.css">
+  <link rel="stylesheet" href="assets/styles/site.css">
+  <link rel="stylesheet" href="assets/styles/pages/chat.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
+  <script src="assets/scripts/site-shell.js" defer></script>
+  <script src="assets/scripts/chat.js" defer></script>
+</head>
+<body class="chat-page" data-chat-mode="general" data-no-back-top>
+  <pcc-header variant="compact"></pcc-header>
+  <main id="main-content" class="chat-main">
+    <section class="chat-shell" aria-labelledby="chat-title">
+      <header class="chat-toolbar">
+        <div class="chat-toolbar__title">
+          <strong id="chat-title">PCC 通用 AI 助手</strong>
+          <span>适合处理一般问题</span>
+        </div>
+        <div class="chat-toolbar__actions">
+          <label class="visually-hidden" for="model-choice">选择模型</label>
+          <select class="select" id="model-choice" data-chat-model>
+            <option value="gpt-4o">GPT-4o · 复杂任务</option>
+            <option value="gpt-4o-mini">GPT-4o mini · 快速响应</option>
+          </select>
+          <button class="button button--ghost" type="button" data-chat-clear>清除会话</button>
+        </div>
+      </header>
+      <div class="chat-log" data-chat-log role="log" aria-live="polite" aria-relevant="additions">
+        <div class="chat-welcome" data-chat-welcome>
+          <img src="assets/images/brand/pcc.webp" alt="" width="72" height="72">
+          <h1>开始新的对话</h1>
+          <p class="muted">描述你的问题，我会尽力提供帮助。AI 回复仅供参考。</p>
+        </div>
+        <div class="chat-loading" data-chat-loading role="status" hidden><span>正在思考</span><i></i><i></i><i></i></div>
+      </div>
+      <form class="chat-composer" data-chat-form>
+        <label class="visually-hidden" for="chat-input">输入消息</label>
+        <textarea class="textarea" id="chat-input" data-chat-input rows="1" placeholder="输入消息，Enter 发送，Shift + Enter 换行" required></textarea>
+        <button class="button" type="submit">发送</button>
+      </form>
+    </section>
+  </main>
+  <pcc-footer></pcc-footer>
+</body>
+</html>

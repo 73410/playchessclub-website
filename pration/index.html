@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <meta name="description" content="PCC Pration Tools Minecraft 服务器管理插件介绍、指令、权限与下载。">
+  <meta name="theme-color" content="#0d1511">
+  <title>Pration Tools · PlayChessClub</title>
+  <link rel="icon" href="assets/images/brand/pcc.webp" type="image/webp">
+  <script src="assets/scripts/theme.js"></script>
+  <link rel="stylesheet" href="assets/styles/tokens.css">
+  <link rel="stylesheet" href="assets/styles/site.css">
+  <link rel="stylesheet" href="assets/styles/pages/pration.css">
+  <script src="assets/scripts/site-shell.js" defer></script>
+</head>
+<body>
+  <pcc-header></pcc-header>
+  <main id="main-content">
+    <header class="page-hero pration-hero">
+      <div class="container">
+        <div class="pration-hero__copy">
+          <span class="eyebrow">Minecraft 服务器工具</span>
+          <h1>PCC Pration Tools</h1>
+          <p class="lead">一款简洁、实用的服务器管理插件，覆盖公告、签到、投票、问答、ChatGPT 聊天和关服倒计时。</p>
+          <div class="button-row">
+            <a class="button button--accent" href="assets/downloads/pration.jar" download>下载插件</a>
+            <a class="button button--secondary" href="pration/#commands">查看指令</a>
+          </div>
+          <ul class="tag-list" aria-label="插件功能">
+            <li class="tag">公告管理</li><li class="tag">玩家签到</li><li class="tag">投票问答</li><li class="tag">AI 聊天</li><li class="tag">关服倒计时</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="commands" aria-labelledby="commands-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">快速参考</span>
+          <h2 id="commands-title">插件指令</h2>
+          <p>在游戏内输入对应指令即可使用相关功能。</p>
+        </div>
+        <div class="command-grid">
+          <div class="card command-row"><code>/pcc</code><span>插件主指令</span></div>
+          <div class="card command-row"><code>/gonggao</code><span>发布公告</span></div>
+          <div class="card command-row"><code>/shout</code><span>服务器喊话</span></div>
+          <div class="card command-row"><code>/stopp</code><span>倒计时关闭服务器</span></div>
+          <div class="card command-row"><code>/vote</code><span>发起服务器投票</span></div>
+          <div class="card command-row"><code>/question</code><span>发布问题</span></div>
+          <div class="card command-row"><code>/answer</code><span>回答问题</span></div>
+          <div class="card command-row"><code>/chat</code><span>使用 ChatGPT 聊天</span></div>
+          <div class="card command-row"><code>/signin</code><span>每日签到</span></div>
+          <div class="card command-row"><code>/signin_week</code><span>领取连续签到奖励</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="permissions" aria-labelledby="permissions-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">权限管理</span>
+          <h2 id="permissions-title">权限节点</h2>
+          <p>将所需节点分配给对应用户组。</p>
+        </div>
+        <div class="command-grid">
+          <div class="card command-row"><code>pcc.comman.gonggao</code><span>插件主指令</span></div>
+          <div class="card command-row"><code>pcc.command.gonggao</code><span>发布公告</span></div>
+          <div class="card command-row"><code>pcc.command.shout</code><span>服务器喊话</span></div>
+          <div class="card command-row"><code>pcc.command.stop</code><span>倒计时关闭服务器</span></div>
+          <div class="card command-row"><code>pcc.command.chat</code><span>ChatGPT 聊天权限</span></div>
+          <div class="card command-row"><code>pcc.sign</code><span>签到权限</span></div>
+          <div class="card command-row"><code>pcc.signin_week</code><span>领取连续签到奖励权限</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="effects" aria-labelledby="effects-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">游戏内展示</span>
+          <h2 id="effects-title">效果预览</h2>
+          <p>以下截图展示插件主要功能在服务器中的实际效果。</p>
+        </div>
+        <div class="effect-grid">
+          <article class="card effect-card"><img src="assets/images/pration/chat.jpg" alt="Pration ChatGPT 聊天效果" loading="lazy"><h3>/chat · ChatGPT 聊天</h3></article>
+          <article class="card effect-card"><img src="assets/images/pration/announcement-timed.jpg" alt="Pration 定时与进服公告效果" loading="lazy"><h3>定时与进服公告</h3></article>
+          <article class="card effect-card"><img src="assets/images/pration/announcement.jpg" alt="Pration 公告效果" loading="lazy"><h3>/gonggao · 发布公告</h3></article>
+          <article class="card effect-card"><img src="assets/images/pration/question.jpg" alt="Pration 问答效果" loading="lazy"><h3>服务器问答</h3></article>
+          <article class="card effect-card"><img src="assets/images/pration/signin.jpg" alt="Pration 签到效果" loading="lazy"><h3>/signin · 玩家签到</h3></article>
+          <article class="card effect-card"><img src="assets/images/pration/shutdown.jpg" alt="Pration 关服倒计时效果" loading="lazy"><h3>/stopp · 关服倒计时</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="configuration" aria-labelledby="configuration-title">
+      <div class="container">
+        <div class="card card--padded config-card">
+          <div>
+            <span class="eyebrow">开始配置</span>
+            <h2 id="configuration-title">配置方法</h2>
+            <p class="muted">插件基本功能请参考配置文件内的注释。ChatGPT 功能需要额外配置服务端项目。</p>
+          </div>
+          <div class="button-row">
+            <a class="button" href="https://github.com/73410/PCC-Pration-Tools-GPT-Sever" target="_blank" rel="noopener noreferrer">查看 ChatGPT 配置</a>
+            <a class="button button--secondary" href="assets/downloads/pration.jar" download>下载 JAR</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <pcc-footer></pcc-footer>
+</body>
+</html>

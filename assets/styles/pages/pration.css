@@ -1,0 +1,125 @@
+.pration-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.pration-hero::after {
+  position: absolute;
+  top: -5rem;
+  right: -5rem;
+  width: 22rem;
+  aspect-ratio: 1;
+  border: 2.2rem solid color-mix(in srgb, var(--color-accent) 18%, transparent);
+  border-radius: 4rem;
+  content: "";
+  transform: rotate(18deg);
+  animation: pration-orbit 9s ease-in-out infinite alternate;
+}
+
+@keyframes pration-orbit {
+  from { transform: translate3d(0, 0, 0) rotate(18deg) scale(1); }
+  to { transform: translate3d(-1.2rem, 1rem, 0) rotate(24deg) scale(1.05); }
+}
+
+.pration-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.pration-hero__copy {
+  max-width: 51rem;
+}
+
+.command-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.command-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, auto) 1fr;
+  align-items: start;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+}
+
+.command-row code {
+  color: var(--color-primary-strong);
+  font-family: var(--font-mono);
+  font-weight: 750;
+}
+
+.command-row span {
+  color: var(--color-text-soft);
+}
+
+.effect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.effect-card {
+  overflow: hidden;
+}
+
+.effect-card img {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  border-bottom: 1px solid var(--color-border);
+  background: #0a0a0a;
+  object-fit: contain;
+  image-rendering: auto;
+  transition: transform var(--duration-slow) var(--ease-out), filter var(--duration-normal) var(--ease-standard);
+}
+
+.effect-card:hover img {
+  filter: saturate(1.08) contrast(1.04);
+  transform: scale(1.035);
+}
+
+.effect-card h3 {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.config-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+@media (max-width: 52rem) {
+  .effect-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .command-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 38rem) {
+  .effect-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .config-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pration-hero::after {
+    animation: none;
+  }
+}

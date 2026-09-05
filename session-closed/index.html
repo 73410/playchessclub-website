@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <meta name="description" content="登录验证器会话已关闭。">
+  <meta name="theme-color" content="#0d1511">
+  <title>验证器已关闭 · PlayChessClub</title>
+  <link rel="icon" href="assets/images/brand/pcc.webp" type="image/webp">
+  <script src="assets/scripts/theme.js"></script>
+  <link rel="stylesheet" href="assets/styles/tokens.css">
+  <link rel="stylesheet" href="assets/styles/site.css">
+  <script src="assets/scripts/site-shell.js" defer></script>
+  <script src="assets/scripts/session-closed.js" defer></script>
+</head>
+<body>
+  <pcc-header variant="compact"></pcc-header>
+  <main id="main-content" class="feedback-shell">
+    <section class="container feedback-card card" aria-labelledby="closed-title">
+      <div class="feedback-card__icon" aria-hidden="true">⌛</div>
+      <span class="eyebrow">会话超时</span>
+      <h1 id="closed-title">登录验证器已关闭</h1>
+      <p class="lead">由于超过 10 分钟未操作，当前验证会话已自动关闭。</p>
+      <div class="button-row">
+        <button class="button" type="button" data-close-window>关闭窗口</button>
+        <a class="button button--secondary" href="./">返回官网首页</a>
+      </div>
+      <p class="notice" data-close-status tabindex="-1" hidden>浏览器没有允许页面自动关闭此窗口，请使用浏览器的关闭按钮，或返回官网首页。</p>
+    </section>
+  </main>
+  <pcc-footer></pcc-footer>
+</body>
+</html>
