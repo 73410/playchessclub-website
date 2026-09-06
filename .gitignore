@@ -1,3 +1,5 @@
 .DS_Store
 Thumbs.db
 Desktop.ini
+.cache/
+node_modules/

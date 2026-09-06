@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="assets/styles/tokens.css">
   <link rel="stylesheet" href="assets/styles/site.css">
   <link rel="stylesheet" href="assets/styles/pages/home.css">
+  <script type="importmap">
+    { "imports": { "three": "./assets/vendor/three/build/three.module.min.js", "three/addons/": "./assets/vendor/three/addons/" } }
+  </script>
+  <script type="module" src="assets/scripts/home-scene.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
   <script src="assets/scripts/site-shell.js" defer></script>
@@ -25,21 +29,64 @@
   <pcc-header></pcc-header>
 
   <main id="main-content">
-    <section class="home-hero" id="home" aria-labelledby="hero-title">
-      <div class="container">
-        <div class="home-hero__content">
-          <span class="eyebrow">Minecraft 公益服务器</span>
-          <h1 id="hero-title">正如象棋，<span>探索世界</span>，品味人生。</h1>
-          <p class="lead">欢迎来到 PlayChessClub。这里有稳定流畅的生存体验，也有一群愿意一起创造、交流与长期陪伴的玩家。</p>
-          <div class="home-hero__meta" aria-label="服务器信息">
-            <span>QQ 群：1053168412</span>
-          </div>
-          <div class="button-row">
-            <a class="button button--accent" href="https://qm.qq.com/cgi-bin/qm/qr?k=IN_EHEI0R8G_cji3laxoS_g9YxHcx1NF&amp;jump_from=webapi&amp;authKey=VH21pBOzskhbjIx9gc95OoCI02FIVn42saJddZebJaIkO6cQ+eVVE005lr7yos2y">加入 QQ 群</a>
-            <a class="button button--secondary" href="mail/">通过邮件获取 IP</a>
-            <a class="button button--secondary" href="minecraft://?addExternalServer=pcc生存服|be.mcpcc.fun:30001">添加基岩版服务器</a>
-          </div>
+    <section class="journey" id="home" data-home-journey data-scene-state="static" aria-label="游览 PCC 主城">
+      <div class="journey__viewport" data-journey-viewport>
+        <div class="journey__cover" aria-hidden="true"></div>
+        <canvas class="journey__canvas" aria-hidden="true"></canvas>
+        <div class="journey__shade" aria-hidden="true"></div>
+        <div class="journey__topline" aria-hidden="true"><span>PCC · OUR SHARED WORLD</span><span>一方天地，无限可能</span></div>
+        <a class="journey__skip" href="#about">跳过场景 <span aria-hidden="true">↘</span></a>
+        <div class="journey__hud">
+          <span class="journey__scroll"><span aria-hidden="true">↓</span> 向下滚动，走进我们的世界</span>
+          <nav class="journey__chapters-nav" aria-label="场景章节">
+            <a href="#riverside" data-journey-marker aria-current="step"><span>01</span> 河畔初见</a>
+            <a href="#bridge" data-journey-marker><span>02</span> 石桥木屋</a>
+            <a href="#landmarks" data-journey-marker><span>03</span> 主城地标</a>
+            <a href="#together" data-journey-marker><span>04</span> 全景收尾</a>
+          </nav>
+          <div class="journey__progress" aria-hidden="true"><span></span></div>
         </div>
+      </div>
+      <div class="journey__chapters">
+        <section class="journey__chapter journey__chapter--intro" id="riverside" data-journey-stop aria-labelledby="hero-title">
+          <div class="container"><div class="journey__copy">
+            <span class="journey__eyebrow"><span aria-hidden="true" class="journey__live-dot"></span> MINECRAFT 公益服务器 <span class="journey__number">01 / 04</span></span>
+            <h1 id="hero-title">正如象棋，<br><span>探索世界</span>，<br>品味人生。</h1>
+            <p class="journey__lead">欢迎来到 PlayChessClub。这里有稳定流畅的生存体验，也有一群愿意一起创造、交流与长期陪伴的玩家。</p>
+            <div class="journey__actions">
+              <a class="button button--accent" href="https://qm.qq.com/cgi-bin/qm/qr?k=IN_EHEI0R8G_cji3laxoS_g9YxHcx1NF&amp;jump_from=webapi&amp;authKey=VH21pBOzskhbjIx9gc95OoCI02FIVn42saJddZebJaIkO6cQ+eVVE005lr7yos2y">加入 QQ 群 <span aria-hidden="true">↗</span></a>
+              <a class="journey__text-link" href="mail/">通过邮件获取 IP <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="journey__meta"><span>QQ 群：1053168412</span><a href="minecraft://?addExternalServer=pcc生存服|be.mcpcc.fun:30001">添加基岩版服务器 ↗</a></div>
+          </div></div>
+        </section>
+        <section class="journey__chapter" id="bridge" data-journey-stop aria-labelledby="bridge-title">
+          <div class="container"><div class="journey__copy">
+            <span class="journey__eyebrow">沿着河岸，慢慢走 <span class="journey__number">02 / 04</span></span>
+            <h2 id="bridge-title">在方块世界里，<br>留下<span>值得记住</span><br>的时光。</h2>
+            <p class="journey__lead">一座爬满藤蔓的石桥，一盏等你归来的灯。那些亲手搭起的方块，慢慢成了熟悉的风景。</p>
+            <span class="journey__caption">河畔 · 石桥 · 我们的日常</span>
+          </div></div>
+        </section>
+        <section class="journey__chapter" id="landmarks" data-journey-stop aria-labelledby="landmarks-title">
+          <div class="container"><div class="journey__copy">
+            <span class="journey__eyebrow">每一座建筑，都有人在创造 <span class="journey__number">03 / 04</span></span>
+            <h2 id="landmarks-title">从一个方块，<br>到<span>共同的世界</span>。</h2>
+            <p class="journey__lead">在擂台相逢，在信标下集结。探索、建设、交流，让每个人的想法在这里留下轮廓。</p>
+            <span class="journey__caption">交叉剑擂台 · 信标塔</span>
+          </div></div>
+        </section>
+        <section class="journey__chapter" id="together" data-journey-stop aria-labelledby="together-title">
+          <div class="container"><div class="journey__copy">
+            <span class="journey__eyebrow">故事还在继续 <span class="journey__number">04 / 04</span></span>
+            <h2 id="together-title">下一处风景，<br>等你<span>一起创造</span>。</h2>
+            <p class="journey__lead">从河畔木屋到烟火舞台，每一处风景都承载着相聚的记忆。欢迎来到 PCC，把你的故事也留在这里。</p>
+            <div class="journey__actions">
+              <a class="button button--accent" href="https://qm.qq.com/cgi-bin/qm/qr?k=IN_EHEI0R8G_cji3laxoS_g9YxHcx1NF&amp;jump_from=webapi&amp;authKey=VH21pBOzskhbjIx9gc95OoCI02FIVn42saJddZebJaIkO6cQ+eVVE005lr7yos2y">加入我们的世界 <span aria-hidden="true">↗</span></a>
+              <a class="journey__text-link" href="#about">了解 PCC <span aria-hidden="true">↓</span></a>
+            </div>
+          </div></div>
+        </section>
       </div>
     </section>
 

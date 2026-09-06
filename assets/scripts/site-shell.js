@@ -203,6 +203,7 @@
       const themeToggle = this.querySelector("[data-theme-toggle]");
       const themeMenu = this.querySelector(".theme-menu");
       let themeCloseTimer = 0;
+      let themeFocusTimer = 0;
 
       const closeNav = () => {
         nav.dataset.open = "false";
@@ -212,8 +213,10 @@
       const closeTheme = () => {
         if (themeMenu.hidden) return;
         window.clearTimeout(themeCloseTimer);
+        window.clearTimeout(themeFocusTimer);
         themeMenu.classList.remove("is-open");
         themeToggle.setAttribute("aria-expanded", "false");
+        if (themeMenu.contains(document.activeElement)) themeToggle.focus({ preventScroll: true });
         themeCloseTimer = window.setTimeout(() => {
           if (!themeMenu.classList.contains("is-open")) themeMenu.hidden = true;
         }, PCCMotion.reduced() ? 0 : 320);
@@ -237,7 +240,10 @@
         themeMenu.hidden = false;
         requestAnimationFrame(() => themeMenu.classList.add("is-open"));
         themeToggle.setAttribute("aria-expanded", String(open));
-        window.setTimeout(() => themeMenu.querySelector('[aria-checked="true"]')?.focus(), PCCMotion.reduced() ? 0 : 120);
+        window.clearTimeout(themeFocusTimer);
+        themeFocusTimer = window.setTimeout(() => {
+          if (themeMenu.classList.contains("is-open")) themeMenu.querySelector('[aria-checked="true"]')?.focus({ preventScroll: true });
+        }, PCCMotion.reduced() ? 0 : 120);
       });
 
       themeMenu.addEventListener("click", (event) => {
@@ -257,7 +263,7 @@
         if (event.key === "Escape") {
           closeTheme();
           closeNav();
-          themeToggle.focus();
+          themeToggle.focus({ preventScroll: true });
         }
       });
     }

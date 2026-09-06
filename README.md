@@ -12,6 +12,32 @@ python -m http.server 8000
 
 随后访问 `http://localhost:8000/`。
 
+部署到已有 Linux 云虚拟机请参阅 [Nginx 部署步骤](docs/deploy-linux.md)。执行 `python tools/package-site.py` 可生成仅含公开站点文件的 `.cache/deploy/playchessclub-website.zip`；配置模板位于 `deploy/nginx-site.conf`。
+
+## 主页 3D 场景
+
+主页开头为四幕滚动游览：河畔初见、石桥木屋、主城地标、全景收尾。上滑可返回之前的角度，也可通过章节导航或“跳过场景”直接访问内容。浅色主题显示日景，深色主题显示夜景，并支持跟随系统。
+
+运镜采用平滑跟随：桌面每段过渡约需滚动 1.8 屏，手机约 1.6 屏；镜头以与刷新率无关的缓动追随滚动位置，约 0.75 秒完成一次位置变化的 95%。文字会在对应章节短暂停留，加载、窗口变化及返回前台时直接对齐当前章节。
+
+- `assets/scripts/home-world.js` 是可编辑的方块场景源文件，同时定义桌面和手机的镜头位置、观察目标。布局参考现有 `hero.jpg` 和用户提供的 9 月 6 日视频；未拍到的部分为补全重建，不是地图存档导出。
+- `assets/models/home/pcc-riverside.glb` 是独立模型，包含 12,593 个方块实例、原创建筑纹理和静态水面。网页加载后添加动态水纹、光照及灯光光晕；这些运行时效果不写入模型。
+- `assets/scripts/home-scene.js` 管理加载和静态回退，`home-scene-renderer.js` 管理渲染、滚动及主题同步。Three.js 0.180.0 与所用官方模块、MIT 许可证均保存在 `assets/vendor/three/`。
+- 首页优先显示日／夜 WebP 封面。减少动态效果、低于 500px 的窗口高度、WebGL 不可用、模型请求超过 20 秒或渲染失败时，使用正常排版的静态介绍；窗口条件恢复后可重新启用 3D。页面进入后台或场景离开视口时暂停渲染。
+
+仓库内的模型和封面可直接部署，网站运行不需要 Node.js 或构建步骤。修改模型或光照后，开发阶段可使用 Node.js 18+ 与 Playwright 重新生成并验证：
+
+```powershell
+# 已安装 Playwright 时可直接执行；也可指定现成的 playwright / playwright-core 包目录。
+$env:PCC_PLAYWRIGHT_PATH = "你的 playwright-core 包目录"
+$env:PCC_BROWSER_PATH = "你的 Chromium、Chrome 或 Edge 可执行文件路径"
+node tools/build-home-model.mjs
+node tools/capture-home.mjs
+node tools/verify-home.mjs
+```
+
+`PCC_PLAYWRIGHT_PATH` 和 `PCC_BROWSER_PATH` 都可省略，此时使用本地 Playwright 包及其默认 Chromium。生成脚本会验证 GLB 重新加载后的实例数量。浏览器检查涵盖镜头碰撞采样、四幕正反滚动、主题及系统设置、手机横竖屏、静态回退、延迟加载、离屏暂停和子目录部署，截图与报告写入忽略提交的 `.cache/home-qa/`。软件渲染下的自动检查不代表手机真机帧率。
+
 ## 项目结构
 
 ```text

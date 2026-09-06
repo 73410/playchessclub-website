@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PCC model generation — development tool</title>
+  <base href="../">
+  <script type="importmap">{ "imports": { "three": "./assets/vendor/three/build/three.module.min.js", "three/addons/": "./assets/vendor/three/addons/" } }</script>
+</head>
+<body>
+  <p>Development tool. The editable model is generated from home-world.js.</p>
+  <script type="module">
+    import * as THREE from 'three';
+    import { createWorld, CAMERA_STOPS, MOBILE_CAMERA_STOPS } from './assets/scripts/home-world.js';
+    import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    window.generateModel = async () => {
+      const model = createWorld();
+      const bytes = await new GLTFExporter().parseAsync(model, { binary: true });
+      const restored = await new GLTFLoader().parseAsync(bytes, '');
+      let meshes = 0, instances = 0;
+      restored.scene.traverse(node => { if (node.isMesh) meshes++; if (node.isInstancedMesh) instances += node.count; });
+      const data = new Uint8Array(bytes);
+      let binary = '';
+      for (let i = 0; i < data.length; i += 8192) binary += String.fromCharCode(...data.subarray(i, i + 8192));
+      return { base64: btoa(binary), meshes, instances, sourceBlocks: model.userData.blockCount };
+    };
+    window.validateCameraPaths = async () => {
+      const { scene } = await new GLTFLoader().loadAsync('./assets/models/home/pcc-riverside.glb');
+      scene.updateMatrixWorld(true);
+      const boxes = [];
+      const instance = new THREE.Matrix4();
+      const transform = new THREE.Matrix4();
+      let water = false, textures = 0;
+      scene.traverse(node => {
+        if (node.material?.name === 'river-water') water = true;
+        if (node.material?.map) textures++;
+        if (!node.isInstancedMesh || node.material.transparent) return;
+        node.geometry.computeBoundingBox();
+        for (let i = 0; i < node.count; i++) {
+          node.getMatrixAt(i, instance);
+          transform.multiplyMatrices(node.matrixWorld, instance);
+          boxes.push(node.geometry.boundingBox.clone().applyMatrix4(transform).expandByScalar(0.25));
+        }
+      });
+      const collisions = [];
+      for (const [profile, stops] of [['desktop', CAMERA_STOPS], ['mobile', MOBILE_CAMERA_STOPS]]) {
+        const curve = new THREE.CatmullRomCurve3(stops.map(s => new THREE.Vector3(...s.position)), false, 'centripetal');
+        for (let i = 0; i <= 120; i++) {
+          const p = curve.getPoint(i / 120);
+          if (boxes.some(box => box.containsPoint(p))) collisions.push({ profile, progress: i / 120 });
+        }
+      }
+      return { collisions, water, textures, samples: 242 };
+    };
+  </script>
+</body>
+</html>
